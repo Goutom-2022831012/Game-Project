@@ -4,9 +4,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.dipto.game.MainGame;
+import com.dipto.game.model.Pacman;
+import com.dipto.game.view.PacmanRenderer;
+import com.dipto.game.input.InputHandler;
 
 public class GameScreen implements Screen {
+   private SpriteBatch batch;
+   private Pacman pacman;
+   private PacmanRenderer pacmanRenderer;
     private MainGame game;
     private OrthographicCamera camera;
 
@@ -16,17 +23,29 @@ public class GameScreen implements Screen {
     }
 
     @Override
-    public void show() {}
+    public void show() {
+        batch = new SpriteBatch();
+        pacman = new Pacman(100,100,50);
+        pacmanRenderer = new PacmanRenderer();
+        Gdx.input.setInputProcessor(new InputHandler(pacman));
+    }
 
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        pacman.update(delta);
+        batch.begin();
+        pacmanRenderer.render(batch , pacman);
+        batch.end();
     }
 
     @Override public void resize(int width, int height) {}
     @Override public void pause() {}
     @Override public void resume() {}
     @Override public void hide() {}
-    @Override public void dispose() {}
+    @Override public void dispose() {
+        batch.dispose();
+        pacmanRenderer.dispose();
+    }
 }
