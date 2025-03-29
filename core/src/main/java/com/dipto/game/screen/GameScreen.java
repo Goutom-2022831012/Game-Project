@@ -9,11 +9,15 @@ import com.dipto.game.MainGame;
 import com.dipto.game.model.Pacman;
 import com.dipto.game.view.PacmanRenderer;
 import com.dipto.game.input.InputHandler;
+import com.dipto.game.model.Maze;
+import com.dipto.game.view.MazeRenderer;
 
 public class GameScreen implements Screen {
    private SpriteBatch batch;
    private Pacman pacman;
    private PacmanRenderer pacmanRenderer;
+    private Maze maze;
+    private MazeRenderer mazeRenderer;
     private MainGame game;
     private OrthographicCamera camera;
 
@@ -26,6 +30,8 @@ public class GameScreen implements Screen {
     public void show() {
         batch = new SpriteBatch();
         pacman = new Pacman(100,100,50);
+        maze = new Maze();
+        mazeRenderer = new MazeRenderer();
         pacmanRenderer = new PacmanRenderer();
         Gdx.input.setInputProcessor(new InputHandler(pacman));
     }
@@ -36,6 +42,7 @@ public class GameScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         pacman.update(delta);
         batch.begin();
+        mazeRenderer.render(batch,maze);
         pacmanRenderer.render(batch , pacman);
         batch.end();
     }
@@ -46,6 +53,8 @@ public class GameScreen implements Screen {
     @Override public void hide() {}
     @Override public void dispose() {
         batch.dispose();
+        mazeRenderer.dispose();
         pacmanRenderer.dispose();
+
     }
 }

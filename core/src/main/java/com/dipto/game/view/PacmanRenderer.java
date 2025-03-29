@@ -8,7 +8,7 @@ public class PacmanRenderer {
     private Texture pacmanTexture;
 
     public PacmanRenderer() {
-        pacmanTexture = new Texture("pacman.png"); // Load image
+        pacmanTexture = new Texture("pacman.png");
     }
 
     public void render(SpriteBatch batch, Pacman pacman) {
