@@ -34,7 +34,7 @@ public class Pacman {
         if (!isColliding(newPosition, walls)) {
             position.set(newPosition);
         } else {
-            resetPosition(); // Restart the game if Pac-Man hits a wall
+            resetPosition();
         }
 
     float screenWidth = Gdx.graphics.getWidth();

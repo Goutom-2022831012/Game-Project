@@ -8,11 +8,14 @@ public class Alien {
     private float speed;
     private boolean isActive;
     private static final float SIZE = 20;
+    private float leftBoundary, rightBoundary;
 
-    public Alien(float x, float y, float speed) {
+    public Alien(float x, float y, float speed, float leftBoundary, float rightBoundary) {
         this.position = new Vector2(x, y);
         this.speed = speed;
         this.isActive = true;
+        this.leftBoundary = leftBoundary;
+        this.rightBoundary = rightBoundary;
     }
 
     public void update(float delta, Pacman pacman) {
@@ -21,8 +24,12 @@ public class Alien {
         Vector2 direction = new Vector2(pacman.getPosition()).sub(position).nor();
         position.add(direction.scl(speed * delta));
 
+
+        if (position.x < leftBoundary) position.x = leftBoundary;
+        if (position.x > rightBoundary - SIZE) position.x = rightBoundary - SIZE;
+
         if (isEatenByPacman(pacman)) {
-            isActive = false;  // Disappear
+            isActive = false;
         }
     }
 
@@ -32,7 +39,6 @@ public class Alien {
         Rectangle alienBounds = new Rectangle(position.x, position.y, SIZE, SIZE);
 
         if (pacmanBounds.overlaps(alienBounds)) {
-            // Check if Pac-Man is behind the Alien
             Vector2 pacmanDir = getDirectionVector(pacman.getDirection());
             Vector2 alienToPacman = new Vector2(pacmanPos).sub(position).nor();
 
