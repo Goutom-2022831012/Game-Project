@@ -53,7 +53,7 @@ public class GameScreen implements Screen {
             float rightBoundary = segmentWidth * (i + 1);
             float xPosition = (leftBoundary + rightBoundary) / 2 - 10;
             float yPosition = screenHeight / 2; // Middle of the screen
-            aliens.add(new Alien(xPosition, yPosition, 50, leftBoundary, rightBoundary));
+            aliens.add(new Alien(xPosition, yPosition, 40, leftBoundary, rightBoundary));
         }
     }
 
