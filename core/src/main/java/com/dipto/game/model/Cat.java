@@ -6,16 +6,17 @@ import java.util.List;
 import com.badlogic.gdx.math.Rectangle;
 
 
-public class Pacman {
+public class Cat {
     private Vector2 position;
     private float speed;
     private float size;
     private int direction;
     private Vector2 initialPosition;
+    public boolean gameOver = false;
 
-    public Pacman(float x, float y, float size) {
+    public Cat(float x, float y, float size) {
         this.position = new Vector2(x, y);
-        this.speed = 100;
+        this.speed = 150;
         this.initialPosition = new Vector2(x, y);
         this.size = size;
         this.direction = 0;
@@ -34,28 +35,23 @@ public class Pacman {
         if (!isColliding(newPosition, walls)) {
             position.set(newPosition);
         } else {
-            resetPosition();
+            gameOver = true;
         }
 
-    float screenWidth = Gdx.graphics.getWidth();
+        float screenWidth = Gdx.graphics.getWidth();
         float screenHeight = Gdx.graphics.getHeight();
 
         position.x = Math.max(0, Math.min(position.x, screenWidth - size));
         position.y = Math.max(0, Math.min(position.y, screenHeight - size));
     }
     private boolean isColliding(Vector2 newPos, List<Wall> walls) {
-        Rectangle pacmanBounds = new Rectangle(newPos.x, newPos.y, size, size);
+        Rectangle catBounds = new Rectangle(newPos.x, newPos.y, size, size);
         for (Wall wall : walls) {
-            if (pacmanBounds.overlaps(wall.getBounds())) {
+            if (catBounds.overlaps(wall.getBounds())) {
                 return true;
             }
         }
         return false;
-    }
-
-    public void resetPosition() {
-        position.set(initialPosition);
-        direction = 0; // Stop movement
     }
 
     public void moveRight() { direction = 0; }

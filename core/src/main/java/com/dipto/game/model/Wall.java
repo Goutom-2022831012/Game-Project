@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Wall {
     private Vector2 position;
-    private static final int SIZE = 40;
+    private static final int SIZE = 50;
 
     public Wall(float x, float y) {
         this.position = new Vector2(x, y);
