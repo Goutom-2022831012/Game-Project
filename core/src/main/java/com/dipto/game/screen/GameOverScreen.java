@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.dipto.game.MainGame;
+import com.dipto.game.input.InputHandler;
 
 public class GameOverScreen implements Screen {
     private MainGame game;
@@ -31,10 +32,15 @@ public class GameOverScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        if(Gdx.input.isKeyJustPressed(com.badlogic.gdx.Input.Keys.SPACE))
 
+        {
+            game.setScreen(new GameScreen(game));
+        }
         batch.begin();
         font.draw(batch, "Game Over", Gdx.graphics.getWidth() / 2f - 100, Gdx.graphics.getHeight() / 2f + 50);
         font.draw(batch, "Survival Time: " + survivalTime + " seconds", Gdx.graphics.getWidth() / 2f - 150, Gdx.graphics.getHeight() / 2f - 10);
+        font.draw(batch, "Press SPACE to Restart", Gdx.graphics.getWidth() / 2f - 150, Gdx.graphics.getHeight() / 2f - 70);
         batch.end();
     }
 
