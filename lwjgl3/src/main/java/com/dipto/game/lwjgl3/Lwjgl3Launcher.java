@@ -9,7 +9,6 @@ public class Lwjgl3Launcher {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
         config.setTitle("Scared Cat");
         config.setWindowedMode(1000, 980);
-        config.setForegroundFPS(60);
         new Lwjgl3Application(new MainGame(), config);
     }
 }

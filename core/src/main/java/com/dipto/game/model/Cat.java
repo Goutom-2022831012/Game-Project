@@ -11,13 +11,10 @@ public class Cat {
     private float speed;
     private float size;
     private int direction;
-    private Vector2 initialPosition;
-    public boolean gameOver = false;
 
     public Cat(float x, float y, float size) {
         this.position = new Vector2(x, y);
         this.speed = 150;
-        this.initialPosition = new Vector2(x, y);
         this.size = size;
         this.direction = 0;
     }
@@ -34,8 +31,6 @@ public class Cat {
 
         if (!isColliding(newPosition, walls)) {
             position.set(newPosition);
-        } else {
-            gameOver = true;
         }
 
         float screenWidth = Gdx.graphics.getWidth();
@@ -58,7 +53,6 @@ public class Cat {
     public void moveLeft() { direction = 1; }
     public void moveUp() { direction = 2; }
     public void moveDown() { direction = 3; }
-    public int getDirection() {return direction;}
     public Vector2 getPosition() { return position; }
     public float getSize() { return size; }
 }

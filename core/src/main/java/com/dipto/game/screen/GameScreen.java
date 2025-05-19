@@ -28,7 +28,7 @@ public class GameScreen implements Screen {
     private MainGame game;
     private List<Pepe> pepes;
     private PepeRenderer pepeRenderer;
-    private Music backgroundMusic;  // <-- Added music
+    private Music backgroundMusic;
     private float elapsedTime = 0f;
     private int lastPrintedSecond = -1;
     private BitmapFont font;
@@ -111,7 +111,7 @@ public class GameScreen implements Screen {
 
     private boolean isCatCollidingWithPepe(Pepe pepe) {
         Rectangle catBounds = new Rectangle(cat.getPosition().x, cat.getPosition().y, cat.getSize(), cat.getSize());
-        Rectangle pepeBounds = new Rectangle(pepe.getPosition().x, pepe.getPosition().y, 20, 20);
+        Rectangle pepeBounds = new Rectangle(pepe.getPosition().x, pepe.getPosition().y,20, 20);
         return catBounds.overlaps(pepeBounds);
     }
 

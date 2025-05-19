@@ -12,9 +12,8 @@ public class PepeRenderer {
     }
 
     public void render(SpriteBatch batch, Pepe pepe) {
-        if (pepe.isActive()) {
             batch.draw(pepeTexture, pepe.getPosition().x, pepe.getPosition().y, 20, 20);
-        }
+
     }
 
     public void dispose() {
