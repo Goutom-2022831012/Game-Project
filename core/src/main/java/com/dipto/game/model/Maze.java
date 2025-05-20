@@ -5,6 +5,11 @@ import java.util.List;
 
 public class Maze {
     private List<Wall> walls;
+
+    public void setWalls(List<Wall> walls) {
+        this.walls = walls;
+    }
+
     private static final int[][] MAZE_LAYOUT = {
         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
         {1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
