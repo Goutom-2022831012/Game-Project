@@ -10,10 +10,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.dipto.game.MainGame;
 
 public class IntroScreen implements Screen {
-    private final MainGame game;  // Replace with your main game class
+    private final MainGame game;
     private SpriteBatch batch;
     private BitmapFont font;
-    private Texture introImage;
+    private Texture imageTexture;
 
     public IntroScreen(MainGame game) {
         this.game = game;
@@ -21,7 +21,7 @@ public class IntroScreen implements Screen {
         font = new BitmapFont();
         font.getData().setScale(2f);
         font.setColor(Color.BLACK);
-        introImage = new Texture(Gdx.files.internal("intro.png"));
+        imageTexture = new Texture(Gdx.files.internal("intro.png"));
     }
 
     @Override
@@ -31,7 +31,7 @@ public class IntroScreen implements Screen {
 
         batch.begin();
 
-        batch.draw(introImage, 0, 0, 980, 1000);
+        batch.draw(imageTexture, 0, 0, 980, 1000);
         font.draw(batch, "Cat vs Pepe", 500, 200);
         font.draw(batch, "Use arrow keys to move the Cat.", 500, 160);
         font.draw(batch, "Avoid the Pepes chasing you!", 500, 130);
@@ -54,6 +54,6 @@ public class IntroScreen implements Screen {
     public void dispose() {
         batch.dispose();
         font.dispose();
-        introImage.dispose();
+        imageTexture.dispose();
     }
 }
