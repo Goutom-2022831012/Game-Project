@@ -6,9 +6,8 @@ import java.util.List;
 import com.badlogic.gdx.math.Rectangle;
 
 
-public class Cat {
-    private Vector2 position;
-    private float speed;
+public class Cat extends Charecter{
+
     private float size;
     private int direction;
 
@@ -20,6 +19,7 @@ public class Cat {
     }
 
     public void update(float delta, List<Wall> walls) {
+        super.update();
         Vector2 newPosition = new Vector2(position);
 
         switch (direction) {
@@ -53,6 +53,24 @@ public class Cat {
     public void moveLeft() { direction = 1; }
     public void moveUp() { direction = 2; }
     public void moveDown() { direction = 3; }
-    public Vector2 getPosition() { return position; }
+    public Vector2 getPosition() { return super.getPosition(); }
     public float getSize() { return size; }
+
+    @Override
+    public void setPosition(Vector2 position) {
+        super.setPosition(position);
+    }
+
+    @Override
+    public void setSpeed(float speed) {
+        super.setSpeed(speed);
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
+
+    public void setSize(float size) {
+        this.size = size;
+    }
 }
